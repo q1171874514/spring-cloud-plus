@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: test
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 120.27.134.94:8847
+        namespace: a60273f4-07fb-4568-82eb-d078a3b02107
+      config:
+        server-addr: 120.27.134.94:8847
+        namespace: a60273f4-07fb-4568-82eb-d078a3b02107
+        group: DEFAULT_GROUP  # 默认分组就是DEFAULT_GROUP，如果使用默认分组可以不配置
+        file-extension: yml   #默认properties
+  application:
+    name: service-security

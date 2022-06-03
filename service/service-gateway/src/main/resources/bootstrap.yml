@@ -1,0 +1,36 @@
+spring:
+  profiles:
+    active: test
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 120.27.134.94:8847
+        namespace: a60273f4-07fb-4568-82eb-d078a3b02107
+      config:
+        server-addr: 120.27.134.94:8847
+        namespace: a60273f4-07fb-4568-82eb-d078a3b02107
+        group: DEFAULT_GROUP  # 默认分组就是DEFAULT_GROUP，如果使用默认分组可以不配置
+        file-extension: yml   #默认properties
+    gateway:
+      discovery:
+        locator:
+          # 开启从注册中心动态创建路由的功能，利用微服务名进行路由
+          enabled: true
+          # 网关跨域配置start---------------------------------
+          # 开启网关的跨域功能，具体微服务上的跨域需要进行关闭，否则无效
+      #      globalcors:
+      #        cors-configurations:
+      #          '[/**]': # 匹配所有请求
+      #            allowedOrigins: "*" # 跨域处理 允许所有的域
+      #            allowedMethods: # 支持的方法
+      #              - GET
+      #              - POST
+      #              - PUT
+      #              - DELETE
+      # 网关跨域配置end---------------------------------
+
+  application:
+    name: service-gateway
+
+
+
