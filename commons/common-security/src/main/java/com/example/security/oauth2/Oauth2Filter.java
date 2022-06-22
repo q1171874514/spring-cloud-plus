@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.example.modules.security.oauth2;
+package com.example.security.oauth2;
 
 import com.example.constant.Constant;
 import com.example.exception.ErrorCode;
@@ -33,8 +33,9 @@ import java.io.IOException;
  */
 public class Oauth2Filter extends AuthenticatingFilter {
 
+
     @Override
-    protected AuthenticationToken createToken(ServletRequest request, ServletResponse response){
+    protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) throws Exception {
         //获取请求token
         String token = getRequestToken((HttpServletRequest) request);
 
@@ -47,7 +48,6 @@ public class Oauth2Filter extends AuthenticatingFilter {
 
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
-        
         if(((HttpServletRequest) request).getMethod().equals(RequestMethod.OPTIONS.name())){
             return true;
         }
@@ -81,9 +81,6 @@ public class Oauth2Filter extends AuthenticatingFilter {
         httpResponse.setContentType("application/json;charset=utf-8");
         httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
         httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
-        HttpServletRequest httpRequest = (HttpServletRequest) request;
-        String remoteUser = httpRequest.getRemoteUser();
-        String requestURI = httpRequest.getRequestURI();
         try {
             //处理登录失败的异常
             Throwable throwable = e.getCause() == null ? e : e.getCause();
@@ -97,6 +94,8 @@ public class Oauth2Filter extends AuthenticatingFilter {
 
         return false;
     }
+
+
 
     /**
      * 获取请求的token

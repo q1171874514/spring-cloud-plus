@@ -8,6 +8,7 @@
 
 package com.example.modules.security.controller;
 
+import com.example.constant.Constant;
 import com.example.modules.security.dto.LoginDTO;
 import com.example.modules.security.service.CaptchaService;
 import com.example.modules.security.service.ShiroService;
@@ -23,6 +24,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
 
 /**
@@ -46,20 +48,21 @@ public class ShiroController {
 
 	@PostMapping("getByToken")
 	@ApiOperation(value = "获取登录用户信息")
-	public Result<UserTokenDetail> getByToken(String token) {
-		return new Result<UserTokenDetail>().ok(shiroService.getByToken(token));
+	public Result<UserTokenDetail> getByToken(@RequestHeader("token") String token) {
+		UserTokenDetail userTokenDetail = shiroService.getByToken(token);
+		return new Result<UserTokenDetail>().ok(userTokenDetail);
 	}
 
 	@PostMapping("getUser")
 	@ApiOperation(value = "获取登录用户信息")
-	public Result<UserDetail> getUser(Long userId) {
+	public Result<UserDetail> getUser(@RequestParam("userId") Long userId) {
 
 		return new Result<UserDetail>().ok(shiroService.getUser(userId));
 	}
 
 	@PostMapping("getUserByToken")
 	@ApiOperation(value = "获取登录用户信息")
-	public Result<UserDetail> getUserByToken(String token) {
+	public Result<UserDetail> getUserByToken(@RequestHeader("token") String token) {
 
 		return new Result<UserDetail>().ok(shiroService.getUserByToken(token));
 	}

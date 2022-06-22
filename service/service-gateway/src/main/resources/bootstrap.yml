@@ -16,21 +16,7 @@ spring:
         locator:
           # 开启从注册中心动态创建路由的功能，利用微服务名进行路由
           enabled: true
-          # 网关跨域配置start---------------------------------
-          # 开启网关的跨域功能，具体微服务上的跨域需要进行关闭，否则无效
-      #      globalcors:
-      #        cors-configurations:
-      #          '[/**]': # 匹配所有请求
-      #            allowedOrigins: "*" # 跨域处理 允许所有的域
-      #            allowedMethods: # 支持的方法
-      #              - GET
-      #              - POST
-      #              - PUT
-      #              - DELETE
-      # 网关跨域配置end---------------------------------
-
   application:
     name: service-gateway
-
 
 

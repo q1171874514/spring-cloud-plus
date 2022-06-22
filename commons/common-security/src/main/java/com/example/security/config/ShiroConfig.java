@@ -6,10 +6,10 @@
  * 版权所有，侵权必究！
  */
 
-package com.example.modules.security.config;
+package com.example.security.config;
 
-import com.example.modules.security.oauth2.Oauth2Filter;
-import com.example.modules.security.oauth2.Oauth2Realm;
+import com.example.security.oauth2.Oauth2Filter;
+import com.example.security.oauth2.Oauth2Realm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -27,7 +27,6 @@ import javax.servlet.Filter;
 import java.util.*;
 
 import static javax.servlet.DispatcherType.*;
-
 
 /**
  * Shiro的配置文件
@@ -118,7 +117,6 @@ public class ShiroConfig {
         registration.setDispatcherTypes(ASYNC, REQUEST, FORWARD, INCLUDE, ERROR);
         return registration;
     }
-
 
 
 }

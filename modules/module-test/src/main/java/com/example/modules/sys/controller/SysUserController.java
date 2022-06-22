@@ -40,4 +40,8 @@ public class SysUserController {
 
 		return new Result<SysUserDTO>().ok(data);
 	}
+
+
+
+
 }

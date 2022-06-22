@@ -9,8 +9,11 @@
 package com.example.utils;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 /**
@@ -51,5 +54,22 @@ public class SpringContextUtils implements ApplicationContextAware {
 	public static Class<? extends Object> getType(String name) {
 		return applicationContext.getType(name);
 	}
+
+	public static boolean addBean(String name, Object refresObject) {
+		if(applicationContext == null || refresObject == null)
+			return false;
+		DefaultListableBeanFactory defaultListableBeanFactory = (DefaultListableBeanFactory) applicationContext.getAutowireCapableBeanFactory();
+		//创建bean信息
+		BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(refresObject.getClass());
+		beanDefinitionBuilder.addConstructorArgValue(refresObject);
+
+		defaultListableBeanFactory.removeBeanDefinition(name);
+		//加入
+		defaultListableBeanFactory
+				.registerBeanDefinition(name,beanDefinitionBuilder.getBeanDefinition());
+		return true;
+	}
+
+
 
 }

@@ -11,5 +11,6 @@ spring:
         namespace: a60273f4-07fb-4568-82eb-d078a3b02107
         group: DEFAULT_GROUP  # 默认分组就是DEFAULT_GROUP，如果使用默认分组可以不配置
         file-extension: yml   #默认properties
+        refresh-enabled: true
   application:
     name: service-security

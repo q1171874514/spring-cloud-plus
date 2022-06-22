@@ -182,4 +182,8 @@ public interface Constant {
             return value;
         }
     }
+
+    String SHIRO_CONFIG = "shiro-config";
+
+
 }

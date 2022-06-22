@@ -39,6 +39,14 @@ public class ConvertUtils {
         return targetObject;
     }
 
+    public static Object sourceToTarget(Object source, Object target) {
+        if(source == null || target == null){
+            return null;
+        }
+        BeanUtils.copyProperties(source, target);
+        return target;
+    }
+
     public static <T> List<T> sourceToTarget(Collection<?> sourceList, Class<T> target){
         if(sourceList == null){
             return null;

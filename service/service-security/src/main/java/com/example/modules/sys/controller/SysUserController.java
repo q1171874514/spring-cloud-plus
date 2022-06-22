@@ -32,6 +32,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
@@ -54,6 +55,8 @@ public class SysUserController {
 	private SysUserService sysUserService;
 	@Autowired
 	private SysRoleUserService sysRoleUserService;
+	@Autowired
+	private ShiroFilterFactoryBean shiroFilterFactoryBean;
 
 	@GetMapping("page")
 	@ApiOperation("分页")
@@ -75,8 +78,9 @@ public class SysUserController {
 
 	@GetMapping("{id}")
 	@ApiOperation("信息")
-	@RequiresPermissions("sys:user:info")
+//	@RequiresPermissions("sys:user:info")
 	public Result<SysUserDTO> get(@PathVariable("id") Long id){
+		ShiroFilterFactoryBean shiroFilterFactoryBean = this.shiroFilterFactoryBean;
 		SysUserDTO data = sysUserService.get(id);
 
 		//用户角色列表

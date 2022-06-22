@@ -37,3 +37,13 @@ mybatis-plus:
     jdbc-type-for-null: 'null'
 
 
+# 开启Feign对Hystrix的支持
+feign:
+  hystrix:
+    enabled: true
+
+  client:
+    config:
+      default:
+        connectTimeout: 1000  # 指定Feign连接提供者的超时时限
+        readTimeout: 1000    # 指定Feign从请求到获取提供者响应的超时时限
