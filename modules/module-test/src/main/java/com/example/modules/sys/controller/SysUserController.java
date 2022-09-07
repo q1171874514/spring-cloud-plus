@@ -1,13 +1,12 @@
 /**
  * Copyright (c) 2018 人人开源 All rights reserved.
- *
+ * <p>
  * https://www.renren.io
- *
+ * <p>
  * 版权所有，侵权必究！
  */
 
 package com.example.modules.sys.controller;
-
 
 
 import com.example.modules.sys.dto.SysUserDTO;
@@ -21,27 +20,25 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 用户管理
- * 
+ *
  * @author Mark sunlightcs@gmail.com
  */
 @RestController
 @RequestMapping("/sys/user")
-@Api(tags="用户管理")
+@Api(tags = "用户管理")
 public class SysUserController {
 
-	@Autowired
-	private SysUserService sysUserService;
+    @Autowired
+    private SysUserService sysUserService;
 
-	@GetMapping("{id}")
-	@ApiOperation("信息")
-	@RequiresPermissions("sys:user:info")
-	public Result<SysUserDTO> get(@PathVariable("id") Long id){
-		SysUserDTO data = sysUserService.get(id);
+    @GetMapping("{id}")
+    @ApiOperation("信息")
+    @RequiresPermissions("sys:user:info")
+    public Result<SysUserDTO> get(@PathVariable("id") Long id) {
+        SysUserDTO data = sysUserService.get(id);
 
-		return new Result<SysUserDTO>().ok(data);
-	}
-
-
+        return new Result<SysUserDTO>().ok(data);
+    }
 
 
 }

@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class TestAspect {
     @Pointcut("@annotation(com.example.comment.TestAnnotation)")
-    private void pointcut() { }
+    private void pointcut() {
+    }
 
     //前置
     @Before("pointcut() && @annotation(testAnnotation)")
@@ -29,7 +30,7 @@ public class TestAspect {
         System.out.println("Around");
         try {
             return proceedingJoinPoint.proceed();
-        }catch (Throwable e) {
+        } catch (Throwable e) {
             throw new RuntimeException(e);
         } finally {
 

@@ -4,12 +4,10 @@
 <mapper namespace="com.example.modules.sys.dao.SysUserDao">
 
 
-
-	<select id="getById" resultType="com.example.modules.sys.entity.SysUserEntity">
-		select t1.*, (select t2.name from sys_dept t2 where t2.id=t1.dept_id) deptName from sys_user t1
-			where t1.id = #{value}
-	</select>
-
+    <select id="getById" resultType="com.example.modules.sys.entity.SysUserEntity">
+        select t1.*, (select t2.name from sys_dept t2 where t2.id=t1.dept_id) deptName from sys_user t1
+        where t1.id = #{value}
+    </select>
 
 
 </mapper>

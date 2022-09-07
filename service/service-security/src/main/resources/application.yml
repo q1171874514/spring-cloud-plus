@@ -15,7 +15,9 @@ mybatis-plus:
     cache-enabled: false
     call-setters-on-nulls: true
     jdbc-type-for-null: 'null'
-
+server:
+  tomcat:
+    uri-encoding: UTF-8
 spring:
   messages:
     encoding: UTF-8

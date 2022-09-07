@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
     private Integer a = 0;
+
     @TestAnnotation("11")
     @PostMapping("/post")
     public String post() {

@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.example.modules.sys.enums;
+package com.example.enums;
 
 /**
  * 菜单类型枚举

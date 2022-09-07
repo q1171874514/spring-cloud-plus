@@ -1,4 +1,4 @@
-package com.example.security.feign.configuration;
+package com.example.feign.configuration;
 
 import feign.Response;
 import feign.RetryableException;

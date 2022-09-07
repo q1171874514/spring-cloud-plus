@@ -1,26 +1,26 @@
 /**
- * Copyright (c) 2018 人人开源 All rights reserved.
- *
+ * Copyright (c) 2019 人人开源 All rights reserved.
+ * <p>
  * https://www.renren.io
- *
+ * <p>
  * 版权所有，侵权必究！
  */
 
-package com.example.modules.sys.enums;
+package com.example.enums;
 
 /**
- * 用户状态
+ * 行政区域  级别枚举
  *
  * @author Mark sunlightcs@gmail.com
- * @since 1.0.0
  */
-public enum UserStatusEnum {
-    DISABLE(0),
-    ENABLED(1);
+public enum RegionLevelEnum {
+    ONE(1),
+    TWO(2),
+    THREE(3);
 
     private int value;
 
-    UserStatusEnum(int value) {
+    RegionLevelEnum(int value) {
         this.value = value;
     }
 

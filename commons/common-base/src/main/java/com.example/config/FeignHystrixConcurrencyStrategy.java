@@ -1,4 +1,4 @@
-package com.example.security.config;
+package com.example.config;
 
 import com.netflix.hystrix.HystrixThreadPoolKey;
 import com.netflix.hystrix.HystrixThreadPoolProperties;

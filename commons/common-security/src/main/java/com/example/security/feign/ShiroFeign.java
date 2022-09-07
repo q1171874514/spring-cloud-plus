@@ -1,7 +1,7 @@
 package com.example.security.feign;
 
 
-import com.example.security.feign.configuration.FeignConfiguration;
+import com.example.feign.configuration.FeignConfiguration;
 import com.example.security.feign.factory.ShiroFallbackFactory;
 import com.example.user.UserDetail;
 import com.example.user.UserTokenDetail;
