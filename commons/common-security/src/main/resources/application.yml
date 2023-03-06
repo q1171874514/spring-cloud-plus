@@ -1,2 +1,3 @@
 shiro-config:
   filter-chain-definition:
+#    "/{接口名}={类型}"
