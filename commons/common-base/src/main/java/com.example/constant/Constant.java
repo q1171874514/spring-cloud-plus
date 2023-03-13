@@ -185,5 +185,25 @@ public interface Constant {
 
     String SHIRO_CONFIG = "shiro-config";
 
+    String ACCESS_TYPE = "ACCESS_TYPE";
 
+    enum AccessType{
+        /**
+         * 外部访问
+         */
+        external("external"),
+        /**
+         * 内部访问
+         */
+        internal("internal");
+        private String value;
+
+        AccessType(String value) {
+            this.value = value;
+        };
+
+        public String getValue() {
+            return value;
+        }
+    }
 }

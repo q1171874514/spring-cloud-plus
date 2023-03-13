@@ -16,7 +16,10 @@ spring:
         locator:
           # 开启从注册中心动态创建路由的功能，利用微服务名进行路由
           enabled: true
+      routes:
+        - id: add_request_header_route
+          uri: http://example.org
+          filters:
+            - AddRequestHeader=X-Request-Foo, Bar
   application:
     name: service-gateway
-
-

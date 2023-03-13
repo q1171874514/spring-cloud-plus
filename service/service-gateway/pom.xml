@@ -14,22 +14,22 @@
         <!--集成公共模块-->
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>common-base</artifactId>
+            <artifactId>common-gateway</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <!--GateWay 网关-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
+<!--        &lt;!&ndash;GateWay 网关&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-gateway</artifactId>-->
+<!--        </dependency>-->
 
 <!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-webflux</artifactId>-->
+<!--        </dependency>-->
+
+        <!--        <dependency>-->
 <!--            <groupId>com.alibaba.csp</groupId>-->
 <!--            <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>-->
 <!--        </dependency>-->

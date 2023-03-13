@@ -10,7 +10,8 @@
         <module>service</module>
         <module>modules</module>
         <module>commons</module>
-<!--        <module>commons/common-base</module>-->
+        <module>commons-gateway</module>
+        <!--        <module>commons/common-base</module>-->
 <!--        <module>commons/common-module</module>-->
 <!--        <module>service/service-gateway</module>-->
 <!--        <module>service/service-security</module>-->

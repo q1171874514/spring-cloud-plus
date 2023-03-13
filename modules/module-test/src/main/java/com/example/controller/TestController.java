@@ -1,9 +1,11 @@
 package com.example.controller;
 
 import com.example.comment.TestAnnotation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/test")
@@ -12,8 +14,38 @@ public class TestController {
 
     @TestAnnotation("11")
     @PostMapping("/post")
-    public String post() {
+    public Map<String, Object> post(@RequestBody Map<String, Object> map) {
+        map.put("test", a++);
+        return map;
+    }
 
-        return "test" + a++;
+    //    @TestAnnotation("11")
+    @PostMapping("/body")
+    public Map<String, Object> body(@RequestBody Map<String, Object> map) {
+        map.put("test", a++);
+        return map;
+    }
+
+    @TestAnnotation("11")
+    @PostMapping("/params")
+    public Map<String, Object> params(@RequestParam Map<String, Object> map) {
+        map.put("test", a++);
+        return map;
+    }
+
+    @TestAnnotation("11")
+    @PostMapping("/headers")
+    public Map<String, Object> headers(ServletRequest request, @RequestHeader Map<String, Object> map) {
+        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+        map.put("test", a++);
+        return map;
+    }
+
+    @TestAnnotation("11")
+    @GetMapping("/headers")
+    public Map<String, Object> headerss(ServletRequest request, @RequestHeader Map<String, Object> map) {
+        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+        map.put("test", a++);
+        return map;
     }
 }

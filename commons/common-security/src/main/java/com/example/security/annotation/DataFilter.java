@@ -30,12 +30,12 @@ public @interface DataFilter {
     String prefix() default "";
 
     /**
-     * 用户ID
+     * 对应用户属性名
      */
     String userId() default "creator";
 
     /**
-     * 部门ID
+     * 对应部门属性名
      */
     String deptId() default "dept_id";
 

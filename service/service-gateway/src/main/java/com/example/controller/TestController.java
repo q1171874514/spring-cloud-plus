@@ -1,15 +1,22 @@
 package com.example.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/test")
 public class TestController {
     private Integer a = 0;
     @PostMapping("/post")
-    public String post() {
-        return "test" + a++;
+    public Map<String, Object> post(@RequestBody Map<String, Object> map) {
+        map.put("test", a++);
+        return map;
     }
+
+
+
 }
