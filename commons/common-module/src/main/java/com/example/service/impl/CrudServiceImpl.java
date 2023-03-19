@@ -59,22 +59,23 @@ public abstract class CrudServiceImpl<M extends BaseMapper<T>, T, D> extends Bas
     }
 
     @Override
-    public void save(D dto) {
+    public boolean save(D dto) {
         T entity = ConvertUtils.sourceToTarget(dto, currentModelClass());
-        insert(entity);
+        boolean insert = insert(entity);
 
         //copy主键值到dto
         BeanUtils.copyProperties(entity, dto);
+        return insert;
     }
 
     @Override
-    public void update(D dto) {
+    public boolean update(D dto) {
         T entity = ConvertUtils.sourceToTarget(dto, currentModelClass());
-        updateById(entity);
+        return updateById(entity);
     }
 
     @Override
-    public void delete(Long[] ids) {
-        baseDao.deleteBatchIds(Arrays.asList(ids));
+    public int delete(Long[] ids) {
+        return baseDao.deleteBatchIds(Arrays.asList(ids));
     }
 }
