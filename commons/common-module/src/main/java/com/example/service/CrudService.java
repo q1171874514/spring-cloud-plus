@@ -26,10 +26,10 @@ public interface CrudService<T, D> extends BaseService<T> {
 
     D get(Long id);
 
-    boolean save(D dto);
+    void save(D dto);
 
-    boolean update(D dto);
+    void update(D dto);
 
-    int delete(Long[] ids);
+    void delete(Long[] ids);
 
 }

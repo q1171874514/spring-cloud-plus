@@ -45,14 +45,63 @@ public class ExternalAccessFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
+////        // mediaType
+//        MediaType mediaType = exchange.getRequest().getHeaders().getContentType();
+////        // read & modify body
+//        ServerRequest serverRequest = new DefaultServerRequest(exchange);
+//        Mono<String> modifiedBody = serverRequest.bodyToMono(JSONObject.class)
+//                .flatMap(body -> {
+//                    if (MediaType.APPLICATION_JSON.isCompatibleWith(mediaType)) {
+//                        System.out.println("------------------------------------");
+//                        System.out.println(body);
+//                        JSONObject jsonObject = body;
+//                        jsonObject.put("test123456", "5");
+//                        // 对原先的body进行修改操作
+//                        String newBody = jsonObject.toJSONString();
+//                        return Mono.just(newBody);
+//                    } else {
+//                        System.out.println("------------------------------------");
+//                        System.out.println("tttttttttt");
+//                    }
+//                    return Mono.empty();
+//                });
+//        BodyInserter bodyInserter = BodyInserters.fromPublisher(modifiedBody, String.class);
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.putAll(exchange.getRequest().getHeaders());
+//        headers.remove(HttpHeaders.CONTENT_LENGTH);
+//        CachedBodyOutputMessage outputMessage = new CachedBodyOutputMessage(exchange, headers);
+//        return bodyInserter.insert(outputMessage, new BodyInserterContext())
+//                .then(Mono.defer(() -> {
+//                    ServerHttpRequestDecorator decorator = new ServerHttpRequestDecorator(
+//                            exchange.getRequest()) {
+//                        @Override
+//                        public HttpHeaders getHeaders() {
+//                            long contentLength = headers.getContentLength();
+//                            HttpHeaders httpHeaders = new HttpHeaders();
+//                            httpHeaders.putAll(super.getHeaders());
+//                            if (contentLength > 0) {
+//                                httpHeaders.setContentLength(contentLength);
+//                            } else {
+//                                httpHeaders.set(HttpHeaders.TRANSFER_ENCODING, "chunked");
+//                            }
+//                            return httpHeaders;
+//                        }
+//
+//                        @Override
+//                        public Flux<DataBuffer> getBody() {
+//                            return outputMessage.getBody();
+//                        }
+//                    };
+//                    return chain.filter(exchange.mutate().request(decorator).build());
+//                }));
 
 
-//        RewriteServerHttpRequest rewriteServerHttpRequest = new RewriteServerHttpRequest(exchange);
-//        rewriteServerHttpRequest.getBodyJson().put("bodyaa","1");
-//        rewriteServerHttpRequest.getParams().put("paramsaa","1");
-//        rewriteServerHttpRequest.getHeaders().put("Headersaa", new ArrayList<String>(){{add("1");}});
-//        return rewriteServerHttpRequest.build(exchange,chain);
-        return chain.filter(exchange);
+        RewriteServerHttpRequest rewriteServerHttpRequest = new RewriteServerHttpRequest(exchange);
+        rewriteServerHttpRequest.getBodyJson().put("bodyaa","1");
+        rewriteServerHttpRequest.getParams().put("paramsaa","1");
+        rewriteServerHttpRequest.getHeaders().put("Headersaa", new ArrayList<String>(){{add("1");}});
+        return rewriteServerHttpRequest.build(exchange,chain);
+//        return chain.filter(exchange);
 
     }
 
