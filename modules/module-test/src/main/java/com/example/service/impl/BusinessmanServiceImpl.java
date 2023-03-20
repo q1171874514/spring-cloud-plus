@@ -24,7 +24,7 @@ public class BusinessmanServiceImpl extends BaseServiceImpl<BusinessmanDao, Busi
 
     @Override
     public int moneySubtract(Long[] ids, BigDecimal money) {
-        return baseDao.moneySubtract(ids,money);
+        return baseDao.moneySubtract(ids, money);
     }
 
     @Override
@@ -42,7 +42,6 @@ public class BusinessmanServiceImpl extends BaseServiceImpl<BusinessmanDao, Busi
         Integer count = baseDao.selectCount(wrapper);
         return !count.equals(0) && count.equals(this.moneySubtract(ids, money));
     }
-
 
 
 }

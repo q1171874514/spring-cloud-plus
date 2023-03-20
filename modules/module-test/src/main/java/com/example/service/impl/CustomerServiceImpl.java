@@ -19,7 +19,7 @@ public class CustomerServiceImpl extends BaseServiceImpl<CustomerDao, CustomerEn
 
     @Override
     public int moneySubtract(Long[] ids, BigDecimal money) {
-        return baseDao.moneySubtract(ids,money);
+        return baseDao.moneySubtract(ids, money);
     }
 
     @Override

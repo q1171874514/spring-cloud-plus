@@ -11,14 +11,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.io.Serializable;
 import java.util.Date;
+
 @Data
 @ApiModel(value = "用户管理")
 public class TestDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "id")
-    @Null(message="{id.null}", groups = AddGroup.class)
-    @NotNull(message="{id.require}", groups = UpdateGroup.class)
+    @Null(message = "{id.null}", groups = AddGroup.class)
+    @NotNull(message = "{id.require}", groups = UpdateGroup.class)
     private Long id;
 
     private String name;

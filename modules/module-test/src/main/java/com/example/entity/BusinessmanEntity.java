@@ -7,6 +7,6 @@ import java.math.BigDecimal;
 
 @Data
 @TableName("businessman")
-public class BusinessmanEntity extends BaseEntity{
+public class BusinessmanEntity extends BaseEntity {
     private BigDecimal money;
 }

@@ -6,6 +6,6 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @TableName("test")
-public class TestEntity extends BaseEntity{
+public class TestEntity extends BaseEntity {
     private String name;
 }

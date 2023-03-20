@@ -5,18 +5,18 @@
 
 
     <update id="moneyAdd">
-		update businessman set money = money + #{money} where
-		id in
-        <foreach item="ids" collection="ids" open="(" separator="," close=")">
-            #{ids}
-        </foreach>
-
-	</update>
-    <update id="moneySubtract">
-		update businessman set money = money - #{money} where
+        update businessman set money = money + #{money} where
         id in
         <foreach item="ids" collection="ids" open="(" separator="," close=")">
             #{ids}
         </foreach>
-	</update>
+
+    </update>
+    <update id="moneySubtract">
+        update businessman set money = money - #{money} where
+        id in
+        <foreach item="ids" collection="ids" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+    </update>
 </mapper>

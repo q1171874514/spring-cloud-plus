@@ -41,17 +41,17 @@ public class TestServiceImpl extends CrudServiceImpl<TestDao, TestEntity, TestDT
 
 
     @Override
-    @Transactional(propagation= Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void busToCusMoney(Long busId, Long cusId, BigDecimal money) {
-        if(!businessmanService.moneySubtractBoolAll(new Long[]{busId}, money)
-            || !customerService.moneyAddBoolAll(new Long[]{cusId}, money))
+        if (!businessmanService.moneySubtractBoolAll(new Long[]{busId}, money)
+                || !customerService.moneyAddBoolAll(new Long[]{cusId}, money))
             throw new RenException("交易失败");
     }
 
     @Override
-    @Transactional(propagation= Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void cusToBusMoney(Long busId, Long cusId, BigDecimal money) {
-        if(!customerService.moneySubtractBoolAll(new Long[]{busId}, money)
+        if (!customerService.moneySubtractBoolAll(new Long[]{busId}, money)
                 || !businessmanService.moneyAddBoolAll(new Long[]{cusId}, money))
             throw new RenException("交易失败");
     }

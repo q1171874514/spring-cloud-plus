@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.math.BigDecimal;
 import java.util.Map;
 
-public interface CustomerService extends BaseService<CustomerEntity>{
+public interface CustomerService extends BaseService<CustomerEntity> {
     int moneyAdd(Long[] ids, BigDecimal money);
 
     int moneySubtract(Long[] ids, BigDecimal money);
