@@ -2,7 +2,6 @@ package com.example.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.dao.CustomerDao;
-import com.example.entity.BusinessmanEntity;
 import com.example.entity.CustomerEntity;
 import com.example.service.CustomerService;
 import org.springframework.stereotype.Service;

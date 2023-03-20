@@ -34,11 +34,6 @@ public class TestServiceImpl extends CrudServiceImpl<TestDao, TestEntity, TestDT
         return wrapper;
     }
 
-    @Override
-    public boolean save(TestDTO dto) {
-        return super.save(dto);
-    }
-
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)

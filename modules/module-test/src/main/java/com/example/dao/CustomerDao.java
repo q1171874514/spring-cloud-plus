@@ -13,3 +13,4 @@ public interface CustomerDao extends BaseDao<CustomerEntity> {
 
     int moneySubtract(@Param("ids") Long[] ids, @Param("money") BigDecimal money);
 }
+
