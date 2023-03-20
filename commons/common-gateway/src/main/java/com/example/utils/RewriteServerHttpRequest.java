@@ -1,6 +1,5 @@
 package com.example.utils;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,14 +9,10 @@ import org.springframework.cloud.gateway.filter.factory.rewrite.CachedBodyOutput
 import org.springframework.cloud.gateway.support.BodyInserterContext;
 import org.springframework.cloud.gateway.support.DefaultServerRequest;
 import org.springframework.core.io.buffer.DataBuffer;
-import org.springframework.core.io.buffer.DataBufferUtils;
-import org.springframework.data.repository.query.parser.Part;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpRequestDecorator;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -26,15 +21,12 @@ import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.nio.CharBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * 重写HttpServletRequestWrapper
@@ -55,8 +47,6 @@ public class RewriteServerHttpRequest extends ServerHttpRequestDecorator {
     @Setter
     @Getter
     private JSONObject bodyJson;
-
-    private MultiValueMap<String, Part> bodyForm;
 
     private CachedBodyOutputMessage outputMessage;
 
@@ -131,26 +121,21 @@ public class RewriteServerHttpRequest extends ServerHttpRequestDecorator {
 
 
     /**
-     * 初始化bodyJson
+     * 初始化body
      */
     public void initBodyJson() {
         // mediaType
         AtomicReference<String> requestBody = new AtomicReference<>("");
-        MediaType mediaType = this.headers.getContentType();
         Flux<DataBuffer> body =  super.getBody();
         body.subscribe(buffer -> {
             CharBuffer charBuffer = StandardCharsets.UTF_8.decode(buffer.asByteBuffer());
-            DataBufferUtils.release(buffer);
             requestBody.set(charBuffer.toString());
         });
-        if(MediaType.APPLICATION_JSON.isCompatibleWith(mediaType))
-            this.bodyJson = JSONObject.parseObject(requestBody.get());
-        if(this.bodyJson == null)
-            this.bodyJson = JSON.parseObject("{}");
+        this.bodyJson = JSONObject.parseObject(requestBody.get());
     }
 
     /**
-     * 载入bodyJson
+     * 载入body
      */
     public Mono<String> loadBodyJson(ServerRequest serverRequest) {
         // mediaType
@@ -163,29 +148,6 @@ public class RewriteServerHttpRequest extends ServerHttpRequestDecorator {
                     return Mono.empty();
                 });
         return modifiedBody;
-
-    }
-
-    /**
-     * 初始化bodyFrom
-     * @return
-     */
-    public void initBodyForm(ServerRequest serverRequest) {
-        AtomicReference<String> requestBody = new AtomicReference<>("");
-        Flux<DataBuffer> body =  super.getBody();
-        body.flatMap(dataBuffer -> {
-            byte[] bytes = new byte[dataBuffer.readableByteCount()];
-            String bodyString = null;
-            try {
-                bodyString = new String(bytes, "utf-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            return Mono.just(bodyString);
-        });
-        // get modified body from original body o
-
-
 
     }
 
