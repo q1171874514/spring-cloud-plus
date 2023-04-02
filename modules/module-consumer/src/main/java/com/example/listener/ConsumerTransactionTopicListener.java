@@ -13,8 +13,9 @@ import org.springframework.stereotype.Component;
  **/
 @Slf4j
 @Component
-@RocketMQMessageListener(consumerGroup = "transaction-template-consumer-group",
-                        topic = "TransactionTemplateTopic"
+@RocketMQMessageListener(
+        consumerGroup = "transaction-template-consumer-group",
+        topic = "TransactionTemplateTopic"
         )
 public class ConsumerTransactionTopicListener implements RocketMQListener<ProducerEntity> {
     private Logger logger = LoggerFactory.getLogger(getClass());

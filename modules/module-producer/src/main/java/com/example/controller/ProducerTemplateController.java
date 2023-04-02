@@ -6,9 +6,6 @@ import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.client.producer.SendStatus;
 import org.apache.rocketmq.client.producer.TransactionSendResult;
-import org.apache.rocketmq.spring.annotation.RocketMQTransactionListener;
-import org.apache.rocketmq.spring.core.RocketMQLocalTransactionListener;
-import org.apache.rocketmq.spring.core.RocketMQLocalTransactionState;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +19,6 @@ import org.springframework.messaging.support.MessageBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.CountDownLatch;
 
 
 /**
@@ -175,25 +171,6 @@ public class ProducerTemplateController {
         return transactionSendResult.getSendStatus();
     }
 
-    @RocketMQTransactionListener()
-    public class TransactionListenerImpl implements RocketMQLocalTransactionListener {
 
-        private Logger logger = LoggerFactory.getLogger(getClass());
-
-        @Override
-        public RocketMQLocalTransactionState executeLocalTransaction(Message msg, Object arg) {
-            // ... local transaction process, return rollback, commit or unknown
-            logger.info("[executeLocalTransaction][执行本地事务，消息：{} arg：{}]", msg, arg);
-            return RocketMQLocalTransactionState.UNKNOWN;
-        }
-
-        @Override
-        public RocketMQLocalTransactionState checkLocalTransaction(Message msg) {
-            // ... check transaction status and return rollback, commit or unknown
-            logger.info("[checkLocalTransaction][回查消息：{}]", msg);
-            return RocketMQLocalTransactionState.COMMIT;
-        }
-
-    }
 
 }
