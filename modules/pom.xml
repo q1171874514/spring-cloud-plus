@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>module-test</module>
+        <module>module-producer</module>
+        <module>module-consumer</module>
     </modules>
 
 

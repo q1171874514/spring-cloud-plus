@@ -4,10 +4,10 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 221.231.130.70:8847
+        server-addr: 124.223.29.111:8847
         namespace: a60273f4-07fb-4568-82eb-d078a3b02107
       config:
-        server-addr: 221.231.130.70:8847
+        server-addr: 124.223.29.111:8847
         namespace: a60273f4-07fb-4568-82eb-d078a3b02107
         group: DEFAULT_GROUP  # 默认分组就是DEFAULT_GROUP，如果使用默认分组可以不配置
         file-extension: yml   #默认properties
@@ -16,10 +16,12 @@ spring:
         locator:
           # 开启从注册中心动态创建路由的功能，利用微服务名进行路由
           enabled: true
-      routes:
-        - id: add_request_header_route
-          uri: http://example.org
-          filters:
-            - AddRequestHeader=X-Request-Foo, Bar
   application:
     name: service-gateway
+
+rocketmq:
+  name-server: 192.168.2.4:9876
+  # 小坑：必须指定group
+  producer:
+    group: test-group
+
