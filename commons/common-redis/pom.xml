@@ -9,15 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>commons</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>common-base</module>
-        <module>common-module</module>
-        <module>common-security</module>
-        <module>common-seata</module>
-        <module>common-gateway</module>
-        <module>common-redis</module>
-    </modules>
+    <artifactId>common-redis</artifactId>
+
 
 </project>
