@@ -1,18 +1,12 @@
 package com.example.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.dao.BusinessmanDao;
 import com.example.entity.BusinessmanEntity;
 import com.example.service.BusinessmanService;
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.stereotype.Service;
-import sun.security.util.ArrayUtil;
 
-import java.lang.reflect.Array;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class BusinessmanServiceImpl extends BaseServiceImpl<BusinessmanDao, BusinessmanEntity> implements BusinessmanService {

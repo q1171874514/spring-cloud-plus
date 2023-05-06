@@ -1,7 +1,7 @@
 package com.example.security.feign;
 
 
-import com.example.feign.configuration.FeignConfiguration;
+import com.example.feign.configuration.TokenFeignConfiguration;
 import com.example.security.feign.factory.ShiroFallbackFactory;
 import com.example.user.UserDetail;
 import com.example.user.UserTokenDetail;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Set;
 
 // 填入注册中心中的应用名, 也就是要调用的微服务的应用名
-@FeignClient(name = "service-security", configuration = {FeignConfiguration.class},fallbackFactory = ShiroFallbackFactory.class)
+@FeignClient(name = "service-security", configuration = {TokenFeignConfiguration.class},fallbackFactory = ShiroFallbackFactory.class)
 @RequestMapping("/shiro")
 public interface ShiroFeign {
 

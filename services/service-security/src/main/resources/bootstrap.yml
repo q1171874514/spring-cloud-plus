@@ -14,5 +14,85 @@ spring:
         group: DEFAULT_GROUP  # 默认分组就是DEFAULT_GROUP，如果使用默认分组可以不配置
         file-extension: yml   #默认properties
         refresh-enabled: true
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group
   application:
     name: service-security
+
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: ${spring.cloud.alibaba.seata.tx-service-group}
+  enable-auto-data-source-proxy: true
+  use-jdk-proxy: true
+  excludes-for-auto-proxying: firstClassNameForExclude,secondClassNameForExclude
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+    grouplist:
+      default: 221.231.130.70:8091
+    enable-degrade: false
+    disable-global-transaction: false
+  client:
+    rm:
+      async-commit-buffer-limit: 1000
+      report-retry-count: 5
+      table-meta-check-enable: false
+      report-success-enable: false
+      saga-branch-register-enable: false
+      lock:
+        retry-interval: 10
+        retry-times: 30
+        retry-policy-branch-rollback-on-conflict: true
+    tm:
+      degrade-check: false
+      degrade-check-period: 2000
+      degrade-check-allow-times: 10
+      commit-retry-count: 5
+      rollback-retry-count: 5
+    undo:
+      data-validation: true
+      log-serialization: jackson
+      log-table: undo_log
+      only-care-update-columns: true
+    log:
+      exceptionRate: 100
+
+  transport:
+    shutdown:
+      wait: 3
+    thread-factory:
+      boss-thread-prefix: NettyBoss
+      worker-thread-prefix: NettyServerNIOWorker
+      server-executor-thread-prefix: NettyServerBizHandler
+      share-boss-worker: false
+      client-selector-thread-prefix: NettyClientSelector
+      client-selector-thread-size: 1
+      client-worker-thread-prefix: NettyClientWorkerThread
+      worker-thread-size: default
+      boss-thread-size: 1
+    type: TCP
+    server: NIO
+    heartbeat: true
+    serialization: seata
+    compressor: none
+    enable-client-batch-send-request: true
+  config:
+    type: nacos
+    nacos:
+      namespace: a60273f4-07fb-4568-82eb-d078a3b02107
+      serverAddr: 124.223.29.111:8847
+      group: SEATA_GROUP
+      username: "nacos"
+      password: "nacos"
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 124.223.29.111:8847
+      group : SEATA_GROUP
+      namespace: a60273f4-07fb-4568-82eb-d078a3b02107
+      username: "nacos"
+      password: "nacos"
+      cluster: default

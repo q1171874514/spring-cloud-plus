@@ -1,6 +1,6 @@
 package com.example.listener;
 
-import com.example.entity.ProducerEntity;
+import com.example.vo.ProducerVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
@@ -14,12 +14,12 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RocketMQMessageListener(consumerGroup = "again-template-consumer-group", topic = "AgainTemplateTopic")
-public class ConsumerAgainTopicListener implements RocketMQListener<ProducerEntity> {
+public class ConsumerAgainTopicListener implements RocketMQListener<ProducerVo> {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     private Integer againNum = 0;
     @Override
-    public void onMessage(ProducerEntity message) {
+    public void onMessage(ProducerVo message) {
         System.out.println("处理消息:" + message.getId());
         if(message.getNumber() != null && againNum > -1 && againNum >= message.getNumber()) {
             againNum = 0;

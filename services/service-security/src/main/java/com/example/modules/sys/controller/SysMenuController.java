@@ -9,7 +9,7 @@
 package com.example.modules.sys.controller;
 
 import com.example.exception.ErrorCode;
-import com.example.modules.security.service.ShiroService;
+import com.example.security.service.ShiroService;
 import com.example.modules.sys.dto.SysMenuDTO;
 import com.example.modules.sys.enums.MenuTypeEnum;
 import com.example.modules.sys.service.SysMenuService;

@@ -1,10 +1,8 @@
 package com.example.service;
 
 import com.example.entity.CustomerEntity;
-import org.apache.ibatis.annotations.Param;
 
 import java.math.BigDecimal;
-import java.util.Map;
 
 public interface CustomerService extends BaseService<CustomerEntity> {
     int moneyAdd(Long[] ids, BigDecimal money);

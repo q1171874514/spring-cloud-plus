@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = {"com.example.**.**.feign"})
+@EnableFeignClients(basePackages = {"com.example.**.feign"})
 public class ModuleTestApplication {
     public static void main(String[] args) {
         SpringApplication.run(ModuleTestApplication.class, args);

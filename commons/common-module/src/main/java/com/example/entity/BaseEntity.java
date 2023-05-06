@@ -23,6 +23,7 @@ import java.util.Date;
  */
 @Data
 public abstract class BaseEntity implements Serializable {
+    private static final long serialVersionUID = 1L;
     /**
      * id
      */
@@ -32,7 +33,7 @@ public abstract class BaseEntity implements Serializable {
      * 创建者
      */
     @TableField(fill = FieldFill.INSERT)
-    private Long  creator;
+    private Long creator;
     /**
      * 创建时间
      */

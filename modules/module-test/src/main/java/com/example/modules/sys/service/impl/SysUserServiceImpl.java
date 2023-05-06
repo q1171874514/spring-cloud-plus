@@ -8,14 +8,12 @@
 
 package com.example.modules.sys.service.impl;
 
-import com.example.service.impl.BaseServiceImpl;
 import com.example.modules.sys.dao.SysUserDao;
 import com.example.modules.sys.dto.SysUserDTO;
 import com.example.modules.sys.entity.SysUserEntity;
-
 import com.example.modules.sys.service.SysUserService;
+import com.example.service.impl.BaseServiceImpl;
 import com.example.utils.ConvertUtils;
-
 import org.springframework.stereotype.Service;
 
 

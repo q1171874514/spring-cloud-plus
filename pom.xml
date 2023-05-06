@@ -53,7 +53,7 @@
         <lombok.version>1.18.4</lombok.version>
         <docker.plugin.version>1.1.1</docker.plugin.version>
         <kaptcha.version>0.0.9</kaptcha.version>
-        <elasticsearch.version>7.17.8</elasticsearch.version>
+
     </properties>
 
     <dependencies>
@@ -61,6 +61,8 @@
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-webflux</artifactId>-->
 <!--        </dependency>-->
+
+
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>aliyun-redis-spring-boot-starter</artifactId>
@@ -218,16 +220,17 @@
             <artifactId>nacos-spring-context</artifactId>
             <version>${nacos-spring-context.version}</version>
         </dependency>
-
-
-
+<!--&lt;!&ndash;        搜索引擎&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>-->
+<!--        </dependency>-->
 
 <!--        <dependency>-->
 <!--            <groupId>com.oracle</groupId>-->
 <!--            <artifactId>ojdbc6</artifactId>-->
 <!--            <version>${oracle.version}</version>-->
 <!--        </dependency>-->
-
 
 
     </dependencies>
@@ -263,12 +266,6 @@
                 <scope>import</scope>
             </dependency>
 
-<!--            搜索引擎-->
-            <dependency>
-                <groupId>org.elasticsearch.client</groupId>
-                <artifactId>elasticsearch-rest-high-level-client</artifactId>
-                <version>${elasticsearch.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 

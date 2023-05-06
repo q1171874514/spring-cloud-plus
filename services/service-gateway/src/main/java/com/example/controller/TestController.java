@@ -9,6 +9,8 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/test")
+//多例模式
+//@Scope("prototype")
 public class TestController {
     private Integer a = 0;
     @PostMapping("/post")
@@ -16,7 +18,4 @@ public class TestController {
         map.put("test", a++);
         return map;
     }
-
-
-
 }

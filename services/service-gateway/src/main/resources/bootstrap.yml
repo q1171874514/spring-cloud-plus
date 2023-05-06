@@ -20,8 +20,10 @@ spring:
     name: service-gateway
 
 rocketmq:
-  name-server: 192.168.2.4:9876
+  name-server: 124.223.29.111:9876
   # 小坑：必须指定group
   producer:
     group: test-group
+
+
 

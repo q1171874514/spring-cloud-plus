@@ -1,6 +1,5 @@
 package com.example.service.impl;
 
-import com.alibaba.csp.sentinel.util.StringUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.dao.TestDao;
 import com.example.dto.TestDTO;
@@ -9,7 +8,6 @@ import com.example.exception.RenException;
 import com.example.service.BusinessmanService;
 import com.example.service.CustomerService;
 import com.example.service.TestService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
