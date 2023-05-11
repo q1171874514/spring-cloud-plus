@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.annotation.Idempotent;
 import com.example.comment.TestAnnotation;
 import com.example.dto.TestDTO;
 import com.example.page.PageData;
@@ -137,6 +138,22 @@ public class TestController {
     public Result busToCus(@RequestBody BusCusMoneyVo busCusMoneyVo) {
         testService.busToCusMoney(busCusMoneyVo.getBusId(), busCusMoneyVo.getCusId(), busCusMoneyVo.getMoney());
         return new Result();
+    }
+
+    @RequestMapping("/idempotent")
+    @Idempotent("test")
+    public Result idempotent(@RequestParam("time") Integer time) throws InterruptedException {
+        System.out.println(1);
+        Thread.sleep(time);
+        return new Result();
+    }
+
+    @TestAnnotation("11")
+    @GetMapping("/headers1")
+    public Map<String, Object> headerss1(ServletRequest request, @RequestHeader Map<String, Object> map) {
+        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+        map.put("test", a++);
+        return map;
     }
 
 }

@@ -18,7 +18,12 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/p_test?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
     username: root
     password: root
-
+  redis:
+    host: 124.223.29.111
+    port: 6379
+    password: 123456
+    database: 0
+    timeout: 30000
 
 # 开启Feign对Hystrix的支持
 feign:

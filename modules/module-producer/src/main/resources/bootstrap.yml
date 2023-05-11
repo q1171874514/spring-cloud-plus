@@ -34,7 +34,12 @@ spring:
     alibaba:
       seata:
         tx-service-group: my_test_tx_group
-
+  redis:
+    host: 124.223.29.111
+    port: 6379
+    password: 123456
+    database: 0
+    timeout: 30000
   application:
     name: module-producer
   datasource:
