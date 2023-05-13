@@ -5,3 +5,4 @@ spring:
     password: 123456
     database: 0
     timeout: 30000
+#https://blog.csdn.net/Alian_1223?type=blog

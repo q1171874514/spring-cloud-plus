@@ -1,5 +1,6 @@
 package com.example.test;
 
+import com.example.service.RedisExpirationMessageService;
 import com.example.test.utils.RedissonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.integration.annotation.IdempotentReceiver;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 @Slf4j
@@ -25,7 +29,10 @@ class RedisTemplateApplicationTests {
     private RedissonUtil redissonUtil;
 
     @Autowired
-    RedissonClient redissonClient;
+    private RedissonClient redissonClient;
+
+    @Autowired
+    private RedisExpirationMessageService redisExpirationMessageService;
 
     @Test
     void main() {
@@ -199,4 +206,25 @@ class RedisTemplateApplicationTests {
         }
     }
 
+    @Test
+    public void keyExpiration() {
+        // 优惠券信息
+        String id = "2023021685264735";
+        Map<String, String> map = new HashMap<>();
+        map.put("id", id);
+        map.put("amount", "1000");
+        map.put("type", "1001");
+        map.put("describe", "满减红包");
+        System.out.println("发起优惠券信息");
+        // 缓存到redis
+        redisTemplate.opsForHash().putAll("com.mall.coupon.id." + id, map);
+        // 设置过期时间
+        redisTemplate.expire("com.mall.coupon.id." + id, 10, TimeUnit.SECONDS);
+    }
+
+    @Test
+    public void redisExpirationMessage() {
+        Long id = Long.valueOf(222212430);
+        redisExpirationMessageService.set(id, "ssssss");
+    }
 }

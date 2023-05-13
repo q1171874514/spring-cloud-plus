@@ -24,6 +24,3 @@ rocketmq:
   # 小坑：必须指定group
   producer:
     group: test-group
-
-
-

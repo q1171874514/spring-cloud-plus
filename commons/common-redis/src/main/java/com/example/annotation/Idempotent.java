@@ -1,7 +1,5 @@
 package com.example.annotation;
 
-import com.example.exception.RenException;
-
 import java.lang.annotation.*;
 
 /**

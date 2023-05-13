@@ -15,7 +15,6 @@
         <module>module-test</module>
         <module>module-producer</module>
         <module>module-consumer</module>
-        <module>module-dome</module>
     </modules>
 
 
